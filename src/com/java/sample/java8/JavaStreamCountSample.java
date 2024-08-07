@@ -8,7 +8,7 @@ public class JavaStreamCountSample {
 
     public static void main(String[] args) {
         List<String> sampleList = List.of("Test1","Test2","Test3","Test4Data","Test5DataInList","Test5"); //Sample List
-        List<Integer> sampleIntList = Arrays.asList(1,2,3,4,5,6,7,8,9,10); //Sample List with 3 values
+        List<Integer> sampleIntList = Arrays.asList(1,2,3,4,5,6,7,8,9,10); //Sample Integer List
 
         long countValue = printListCount(sampleList);
         System.out.println("Count Value "+countValue);
@@ -26,7 +26,6 @@ public class JavaStreamCountSample {
      * @return
      */
     private static long printCountValuebyLength(List<String> sampleList) {
-
         return sampleList.stream().filter(value -> value.length() > 5).count();
     }
 
