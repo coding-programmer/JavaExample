@@ -3,7 +3,7 @@ package com.java.threadsample.Future;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * CompletableFuture
+ * CompletableFuture Example
  */
 public class CompletableFutureExample {
 
@@ -11,7 +11,7 @@ public class CompletableFutureExample {
 
         TestClassWithDelay testClass = new TestClassWithDelay();
 
-        CompletableFuture.supplyAsync(()->
+        CompletableFuture.supplyAsync(()-> //This is an async call
            testClass.getValuesWithDelay() //This is to call the Method for processing by Async
         ).thenAccept(output -> {
             System.out.print(output); //This Method is to Print the output of getValuesWithDelay() method
