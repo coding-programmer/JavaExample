@@ -16,7 +16,6 @@ public class StreamInsertDataInList {
         Employee empNew = new Employee(6, "Hello User");
 
         int startIndex = 2;
-        int endIndex = 3;
         List<Employee> updatedList = IntStream.range(0, empList.size() + 1).mapToObj(index -> {
             if (index < startIndex) {
                 return empList.get(index);
