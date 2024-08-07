@@ -4,39 +4,27 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * thenCombine - It will combine more than one CompletableFuture's together
+ * handle Exception using "exceptionaly"
  */
-public class CompletableFutureThenCombineExample {
+public class CompletableFutureExceptionallyExample {
 
     public static void main(String[] args) {
 
         TestClassWithDelay testClass = new TestClassWithDelay();
         CompletableFuture<String>  firstFuture= CompletableFuture.supplyAsync(testClass::getValuesWithDelay);
         CompletableFuture<String>  secondFuture= CompletableFuture.supplyAsync(testClass::getValueswithDelay02);
-
-        /**
-         * combining two futures
-         */
-        firstFuture.thenCombine(   //has two arguments, first argument will accept the target (next) completion stage, here it is second future
-                secondFuture, (first,second) -> first+second) //Second argument is bifunction will decide what need to be done with first and second argument, here we are combining
-                .thenAccept(System.out::println).join();
-
         /**
          * Combining Three Integer values 5*10*10.
          * combining more than two future's
-         * using "handle" for catching exceptions
+         * using "exceptionally" for catching exceptions
          */
         CompletableFuture<Integer> firstInt = CompletableFuture.supplyAsync(testClass::getValueFive);
         CompletableFuture<Integer> secondInt = CompletableFuture.supplyAsync(testClass::getValueTen);
         CompletableFuture<Integer> ThirdInt = CompletableFuture.supplyAsync(testClass::getValueTen);
-        firstInt.handle((result,ex)->{
-                    //handle Exception
-                    if(ex!=null){
+        firstInt.exceptionally((ex)->{
+                    //handle Exception using Exceptionally
                         System.out.println(ex);
-                        return null;
-                    }else {
-                        return result;  //return the actual result from line number 30
-                    }
-
+                        return 0; //returning Integer value, because the upcoming ".thenCombine(secondInt,(first,second)->first*second)" expects Integer input
                 })
                 .thenCombine(secondInt,(first,second)->first*second)
                 .thenCombine(ThirdInt,(secondoutput,third)->secondoutput*third).thenAccept(System.out::println).join();

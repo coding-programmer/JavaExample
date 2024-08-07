@@ -16,7 +16,7 @@ public class CompletableFutureThenapplyExample {
 
         CompletableFuture.supplyAsync(testClass::getValuesWithDelay)
                 .thenApply((result)->result.replaceAll(",","\\$")) //First Transformation from String replace comma with dollar symbol
-                .thenApply((nextResult)->nextResult.replaceAll("\\$","")) //Second Transaction from String replace dollar symbol with empty
+                .thenApply((nextResult)->nextResult.replaceAll("\\$","")) //Second Transformation from String replace dollar symbol with empty
                                                                                             //There can be multiple thenapply() because it does transformation
                 .thenAccept((output)->{
                     System.out.println(output);  //print the final output
