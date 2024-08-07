@@ -1,4 +1,4 @@
-package com.java.threadsample.Future;
+package com.java.CompletableFuture;
 
 import java.util.concurrent.CompletableFuture;
 

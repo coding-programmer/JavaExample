@@ -1,4 +1,4 @@
-package com.java.sample.java8;
+package com.java.streams;
 
 import com.java.model.Employee;
 import com.java.model.EmployeeUtil;
