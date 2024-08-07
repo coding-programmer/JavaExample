@@ -16,7 +16,6 @@ public class CompletableFuturethenComposeExample {
         getStringValues.thenCompose( //Accept parameter from firstFuture (getStringValues) output
                 (value) -> testClass.getClassName(value)).
                 thenAccept((output) -> System.out.println(output)).join();
-
     }
 
 }
